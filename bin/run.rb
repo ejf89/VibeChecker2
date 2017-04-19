@@ -1,7 +1,7 @@
 require_relative '../config/environment'
 
-test = TwitterAdapter.new
-test.call_twitter #<---runs search and stores into tweets
+top = TwitterAdapter.new
+top.call_twitter #<---runs search and stores into tweets
 
 @checker = SentimentChecker.new
 @checker.set_default
@@ -34,6 +34,7 @@ Query.find_by(id: lastQuery).update(vibe: "#{vibeResult}")
 
 puts "The Vibe is #{vibeResult} towards #{lastQuerystring}.\n\n"
 
+#############################################################
 def return_tweets #-needs to be added to CLI interaction
     Tweet.where(query_id: Query.last.id).limit(5).each do |tweet|
         puts "#{tweet.content}\n"
@@ -41,4 +42,18 @@ def return_tweets #-needs to be added to CLI interaction
     end
 end
 
-return_tweets
+puts "Would like you 2 know more bout de vibe?\n
+        *****(y/n)*****"
+input = gets.chomp
+
+    if input == "y"
+        return_tweets
+    elsif input == "n"
+        puts "Would you like 2 check another vibe?\n
+        *****(y/n)*****"
+    end
+    # 
+    # if input == "y"
+    #     top = TwitterAdapter.new
+    #     top.call_twitter
+    # end
