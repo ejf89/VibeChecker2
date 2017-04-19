@@ -12,16 +12,17 @@
 
 ActiveRecord::Schema.define(version: 20170418205945) do
 
-  create_table "results", force: :cascade do |t|
+  create_table "queries", force: :cascade do |t|
     t.string "search"
     t.string "vibe"
   end
 
   create_table "tweets", force: :cascade do |t|
-    t.string "user_name"
-    t.string "content"
-    t.string "location"
-    t.string "date"
+    t.string  "user_name"
+    t.string  "content"
+    t.string  "location"
+    t.string  "date"
+    t.integer "query_id"
   end
 
 end

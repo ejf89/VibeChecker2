@@ -10,28 +10,41 @@ class TwitterAdapter
 end
 
   def initialize
-    puts "please enter a search"
-    @answer = "#{gets.chomp}"
+    puts "please enter a search: "
+    @search = "#{gets.chomp}"
 
-    puts "How many vibes should I check?"
-    @count = (gets.chomp).to_i
-  end
+    slice_check
+end
+
+def slice_check
+    puts "How many people's vibes should I check?"
+    @count = "#{gets.chomp}"
+
+    if @count.to_i < 39
+        puts "Slice too small, check more vibes"
+        slice_check
+    else
+        @count
+    end
+end
+
 
   def call_twitter
-      results = twitter_login.search("#{@answer} -RT", {language: "en", include_rts: false}).take(@count)
-        tweet_result = results.each do |x|
+      results = twitter_login.search("#{@search} -RT", {language: "en", include_rts: false}).take(@count.to_i)
+       add_query_to_table
+        results.each do |x|
           user_name = x.attrs[:user][:screen_name]
           content = x.attrs[:text]
           location = x.attrs[:user][:location]
           date = x.attrs[:created_at]
-          store_tweet(user_name, content, location, date)
+          store_to_all(user_name, content, location, date)
           end
-      puts tweet_result
-
     end
 
-  def add_answer_to_table
-    Result.create(:search => "#{@answer}")
+
+    #all below methods called above
+  def add_query_to_table
+    @query = Query.create(:search => "#{@search}")
   end
 
   def store_tweet(user_name, content, location, date)
@@ -39,11 +52,13 @@ end
     :user_name => "#{user_name}",
     :content => "#{content}",
     :location => "#{location}",
-    :date => "#{date}"
+    :date => "#{date}",
+    :query_id => @query.id
     )
   end
 
 
-
-
+  def store_to_all(user_name, content, location, date)
+      store_tweet(user_name, content, location, date)
+  end
 end

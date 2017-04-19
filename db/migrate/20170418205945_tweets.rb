@@ -5,6 +5,7 @@ class Tweets < ActiveRecord::Migration[5.0]
       t.string :content
       t.string :location
       t.string :date
+      t.integer :query_id
     end
   end
 end
