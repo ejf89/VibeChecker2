@@ -11,21 +11,23 @@ end
 
   def initialize
     puts "please enter a search"
-    @answer = gets.chomp
+    @answer = "#{gets.chomp}"
+
+    puts "How many vibes should I check?"
+    @count = (gets.chomp).to_i
   end
 
   def call_twitter
-      results = twitter_login.search("#{@answer} -RT", {language: "en", include_rts: false}).take(5)
+      results = twitter_login.search("#{@answer} -RT", {language: "en", include_rts: false}).take(@count)
         tweet_result = results.each do |x|
           user_name = x.attrs[:user][:screen_name]
           content = x.attrs[:text]
           location = x.attrs[:user][:location]
           date = x.attrs[:created_at]
-          binding.pry
           store_tweet(user_name, content, location, date)
           end
-          # binding.pry
       puts tweet_result
+
     end
 
   def add_answer_to_table
@@ -40,6 +42,8 @@ end
     :date => "#{date}"
     )
   end
+
+
 
 
 end
