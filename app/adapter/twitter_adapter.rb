@@ -10,7 +10,8 @@ class TwitterAdapter
 end
 
   def initialize
-    puts "please enter a search: "
+    puts "Please enter the vibe you'd like to check: "
+    puts "\n"
     @search = "#{gets.chomp}"
 
     slice_check
@@ -24,6 +25,7 @@ def slice_check
         puts "Slice too small, check more vibes"
         slice_check
     else
+
         @count
     end
 end
