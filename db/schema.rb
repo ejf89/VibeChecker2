@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20170418205945) do
 
-  create_table "queries", force: :cascade do |t|
+  create_table "searches", force: :cascade do |t|
     t.string "search"
     t.string "vibe"
   end

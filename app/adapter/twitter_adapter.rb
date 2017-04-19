@@ -41,10 +41,10 @@ end
           end
     end
 
-
     #all below methods called above
+####################################################
   def add_query_to_table
-    @query = Query.create(:search => "#{@search}")
+    @query = Search.create(:search => "#{@search}")
   end
 
   def store_tweet(user_name, content, location, date)
@@ -57,8 +57,8 @@ end
     )
   end
 
-
   def store_to_all(user_name, content, location, date)
       store_tweet(user_name, content, location, date)
   end
 end
+########################################################
