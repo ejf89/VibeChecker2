@@ -9,3 +9,5 @@ doc/*
 log/*
 measurement/*
 pkg/*
+
+db/development.db
