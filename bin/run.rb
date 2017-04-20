@@ -21,12 +21,13 @@ def event
 
     scores = Tweet.collect_scores(@checker)
     @average = (scores.sum) / (scores.length)
+    # binding.pry
 
     lastSearchstring = Search.last.search
     vibeResult = SentimentChecker.declaration(@average)
     lastSearch = Search.last.id
 
-    Search.find_by(id: lastSearch).update(vibe: "#{vibeResult}")#<--updates search table
+    Search.find_by(id: lastSearch).update(vibe: "#{vibeResult}", score: @average)#<--updates search table
 
     statement = "Currently, The Vibe is #{vibeResult} towards #{lastSearchstring}.\n\n"
     i = statement.length
@@ -36,6 +37,8 @@ def event
     end
     puts statement
 
+    
+
 
     puts "\nWould like you 2 know more bout de vibe: #{lastSearchstring}?\n
             *****(y/n)*****"
@@ -44,7 +47,20 @@ def event
     if input == "y"
         Tweet.return_tweets
     end
+##############################################
+    # puts "\nWould you like to compare the last time the #{lastSearchstring} was checked?\n
+    # *****(y/n)*****"
+    # input = gets.chomp
+    #
+    # if input.chomp == "y"
+    #     rows = []
+    #     rows << ['One', 1]
+    #     rows << ['Two', 2]
+    #     rows << ['Three', 3]
+    #     table = Terminal::Table.new :rows => rows
+    #   puts
 
+############################################
     puts "\nWould you like 2 check another vibe?\n
     *****(y/n)*****"
     input = gets.chomp
