@@ -7,7 +7,6 @@ class Search < ActiveRecord::Base
       if matches.length >= 2
 
         puts "This vibe has been checked before. Would u like to see previous checks of: #{current}?"
-
         puts "             *****(y/n)*****"
 
 
@@ -24,6 +23,7 @@ class Search < ActiveRecord::Base
               rows2 << [match.score]
               rows3 << [match.count]
               stamps << match.created_at.to_s
+              binding.pry
             end
 
             table = Terminal::Table.new :headings => ['HELLO', 'NOW', 'THEN'] do |t|
