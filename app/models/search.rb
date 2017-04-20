@@ -5,50 +5,27 @@ class Search < ActiveRecord::Base
       current = Search.last.search
       matches = Search.where(search: current)
       if matches.length >= 2
-        # binding.pry
-        # puts "\nWould you like to compare the last time the #{lastSearchstring} was checked?\n"
-          # rows = []
-          # headings = []
-          # headings << ["~*#{current}*~", "Now", "Then"]
-          # rows << ['Vibe', matches.last.vibe, matches[-2].vibe]
-          # rows << ['Score', "#{matches.last.score}", "#{matches[-2].score}"]
-          # table = Terminal::Table.new :headings => headings, :rows => rows
 
-          # rows = []
-          rows1 = ['VIBE']
-          rows2 = ['SCORE']
-          stamps = []
+        puts "This vibe has been checked before. Would u like to see previous checks of: ##{current}?"
 
-          # headings = []
+        if gets.chomp == 'y'
+            rows1 = ['VIBE']
+            rows2 = ['SCORE']
+            stamps = []
 
+            matches.each do |match|
+              rows1 << [match.vibe]
+              rows2 << [match.score]
+              stamps << match.created_at.to_s
+            end
 
-          # matches = matches.reverse
-
-
-
-          matches.each do |match|
-            rows1 << [match.vibe]
-            rows2 << [match.score]
-            stamps << match.created_at.to_s
+            table = Terminal::Table.new :headings => ['HELLO', 'NOW'] do |t|
+              t << rows1.flatten
+              t.add_row rows2.flatten
           end
-
-          # binding.pry
-
-
-          table = Terminal::Table.new :headings => ['HELLO', 'NOW'] do |t|
-            # t.headings << stamps
-            # binding.pry
-            t << rows1.flatten
-            t.add_row rows2.flatten
+            puts table
         end
-
-
-          puts table
-
-
-
-
-      end
+    end
 
     end
 end
