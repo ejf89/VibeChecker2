@@ -37,7 +37,8 @@ def event
     end
     puts statement
 
-    
+    # binding.pry
+    puts Search.search_compare
 
 
     puts "\nWould like you 2 know more bout de vibe: #{lastSearchstring}?\n
