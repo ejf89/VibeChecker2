@@ -4,6 +4,7 @@ def event
 
     while i < 43
         puts star * i
+        sleep(0.03)
         i += 1
     end
 
@@ -15,7 +16,6 @@ def event
 
     scores = Tweet.collect_scores(@checker)
     @average = (scores.sum) / (scores.length)
-    # binding.pry
 
     lastSearchstring = Search.last.search
     vibeResult = SentimentChecker.declaration(@average)
@@ -27,6 +27,7 @@ def event
     i = statement.length
     while i > 0
         puts star * i
+        sleep(0.03)
         i -= 1
     end
     puts statement
@@ -36,7 +37,11 @@ def event
     input = gets.chomp
 
     if input == "y"
+      system('clear')
+        puts "THESE TWEETS ARE VIBIN:"
+        puts "~*~*~*~*~*~*~*~*~*~*~*~*~*~\n\n"
         Tweet.return_tweets
+        puts "\n\n"
         Search.search_compare
     end
 
