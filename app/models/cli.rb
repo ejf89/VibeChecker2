@@ -46,7 +46,6 @@ def event
         Search.search_compare
     end
 
-    system('clear')
     puts "\nWould you like 2 check another vibe?\n
     *****(y/n)*****"
     input = gets.chomp

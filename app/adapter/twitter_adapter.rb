@@ -23,7 +23,7 @@ def slice_check
     system('clear')
 
     if @count.to_i < 3 #<-----change back to large num
-        puts "Slice too small, check more vibes\n"
+        puts "Slice too small, try checking more vibes\n"
         slice_check
     else
 
