@@ -49,7 +49,8 @@ def event
     *****(y/n)*****"
     input = gets.chomp
 
-    if input == "y"
+    if input.chomp == "y"
+
         event
     end
 end
