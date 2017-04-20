@@ -8,7 +8,8 @@ gem 'require_all'
 gem 'sqlite3'
 gem 'twitter'
 gem 'sentimental'
-gem 'progress_bar'
+# gem 'progress_bar'
+gem 'terminal-table'
 
 group :development do
   gem 'pry'

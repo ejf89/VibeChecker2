@@ -18,11 +18,12 @@ end
 end
 
 def slice_check
-    puts "How many people's vibes should I check?"
+    puts "\nHow many people's vibes should I check?"
     @count = "#{gets.chomp}"
+    system('clear')
 
     if @count.to_i < 3 #<-----change back to large num
-        puts "Slice too small, check more vibes"
+        puts "Slice too small, check more vibes\n"
         slice_check
     else
 
