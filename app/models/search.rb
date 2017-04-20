@@ -7,7 +7,11 @@ class Search < ActiveRecord::Base
       if matches.length >= 2
 
         puts "This vibe has been checked before. Would u like to see previous checks of: #{current}?"
+
         puts "             *****(y/n)*****"
+
+
+
 
         if gets.chomp == 'y'
             rows1 = ['VIBE']
