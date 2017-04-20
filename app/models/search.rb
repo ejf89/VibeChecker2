@@ -9,9 +9,9 @@ class Search < ActiveRecord::Base
         # puts "\nWould you like to compare the last time the #{lastSearchstring} was checked?\n"
           rows = []
           headings = []
-          headings << ["o_O", "Now", "Then"]
-          rows << ['Vibe', matches.last.vibe, matches.first.vibe]
-          rows << ['Score', "#{matches.last.score}", "#{matches.first.score}"]
+          headings << ["~*#{current}*~", "Now", "Then"]
+          rows << ['Vibe', matches.last.vibe, matches[-2].vibe]
+          rows << ['Score', "#{matches.last.score}", "#{matches[-2].score}"]
           table = Terminal::Table.new :headings => headings, :rows => rows
 
           puts table
