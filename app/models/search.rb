@@ -6,7 +6,7 @@ class Search < ActiveRecord::Base
       matches = Search.where(search: current)
       if matches.length >= 2
 
-        puts "This vibe has been checked before. Would u like to see previous checks of: ##{current}?"
+        puts "This vibe has been checked before. Would u like to see previous checks of: #{current}?"
 
         if gets.chomp == 'y'
             rows1 = ['VIBE']
@@ -19,7 +19,7 @@ class Search < ActiveRecord::Base
               stamps << match.created_at.to_s
             end
 
-            table = Terminal::Table.new :headings => ['HELLO', 'NOW'] do |t|
+            table = Terminal::Table.new :headings => ['HELLO', 'NOW', 'THEN'] do |t|
               t << rows1.flatten
               t.add_row rows2.flatten
           end
