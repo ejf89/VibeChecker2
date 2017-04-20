@@ -16,7 +16,6 @@ def event
 
     scores = Tweet.collect_scores(@checker)
     @average = (scores.sum) / (scores.length)
-    # binding.pry
 
     lastSearchstring = Search.last.search
     vibeResult = SentimentChecker.declaration(@average)
