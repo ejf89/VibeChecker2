@@ -6,6 +6,8 @@ class Tweet < ActiveRecord::Base
          self.where(query_id: Search.last.id).map do |tweet|
 
             checker.score tweet.content
+            # binding.pry
+
         end
     end
 
