@@ -1,44 +1,65 @@
 require_relative '../config/environment'
 
-test = TwitterAdapter.new
-test.call_twitter #<---runs search and stores into tweets
-
-@checker = SentimentChecker.new
-@checker.set_default
 
 
-def collect_scores
-     Tweet.where(query_id: Query.last.id).map do |tweet|
-        @checker.score tweet.content
+def event
+
+    puts "Welcome to VibeChecker 2\n\n"
+    star = "*"
+    i = 0
+
+    while i < 43
+        puts star * i
+        i += 1
+    end
+
+    top = TwitterAdapter.new
+    top.call_twitter #<---runs search and stores into tweets
+
+    @checker = SentimentChecker.new
+    @checker.set_default
+
+    scores = Tweet.collect_scores(@checker)
+    @average = (scores.sum) / (scores.length)
+
+    lastSearchstring = Search.last.search
+    vibeResult = SentimentChecker.declaration(@average)
+    lastSearch = Search.last.id
+
+    Search.find_by(id: lastSearch).update(vibe: "#{vibeResult}")#<--updates search table
+
+    statement = "Currently, The Vibe is #{vibeResult} towards #{lastSearchstring}.\n\n"
+    i = statement.length
+    while i > 0
+        puts star * i
+        i -= 1
+    end
+    puts statement
+
+
+    puts "\nWould like you 2 know more bout de vibe: #{lastSearchstring}?\n
+            *****(y/n)*****"
+    input = gets.chomp
+
+    if input == "y"
+        Tweet.return_tweets
+    end
+
+    puts "\nWould you like 2 check another vibe?\n
+    *****(y/n)*****"
+    input = gets.chomp
+
+    if input.chomp == "y"
+
+        event
     end
 end
 
-scores = collect_scores
-average = (scores.sum) / (scores.length)
+##### teh shit going down here
+input = gets.chomp
 
-def declaration(average)
-    if average < (-1 * 0.1)
-        "bad"
-    elsif average > 0.05
-        "good"
-    else
-        "indifferent"
-    end
+unless input == "n"
+    event
 end
 
-lastQuerystring = Query.last.search
-vibeResult = declaration(average)
-lastQuery = Query.last.id
-
-Query.find_by(id: lastQuery).update(vibe: "#{vibeResult}")
-
-puts "The Vibe is #{vibeResult} towards #{lastQuerystring}.\n\n"
-
-def return_tweets #-needs to be added to CLI interaction
-    Tweet.where(query_id: Query.last.id).limit(5).each do |tweet|
-        puts "#{tweet.content}\n"
-        puts "* * * * * * * * * * * * * * * * * * * * * * * * \n"
-    end
-end
-
-return_tweets
+puts "THANK YOU GOODBYE!"

@@ -10,7 +10,8 @@ class TwitterAdapter
 end
 
   def initialize
-    puts "please enter a search: "
+    puts "Please enter the vibe you'd like to check: "
+    puts "\n"
     @search = "#{gets.chomp}"
 
     slice_check
@@ -20,10 +21,11 @@ def slice_check
     puts "How many people's vibes should I check?"
     @count = "#{gets.chomp}"
 
-    if @count.to_i < 39
+    if @count.to_i < 3 #<-----change back to large num
         puts "Slice too small, check more vibes"
         slice_check
     else
+
         @count
     end
 end
@@ -41,10 +43,10 @@ end
           end
     end
 
-
     #all below methods called above
+####################################################
   def add_query_to_table
-    @query = Query.create(:search => "#{@search}")
+    @query = Search.create(:search => "#{@search}")
   end
 
   def store_tweet(user_name, content, location, date)
@@ -57,8 +59,8 @@ end
     )
   end
 
-
   def store_to_all(user_name, content, location, date)
       store_tweet(user_name, content, location, date)
   end
 end
+########################################################
