@@ -1,12 +1,13 @@
 class Search < ActiveRecord::Base
     has_many :tweets
-    
+
     def self.search_compare
       current = Search.last.search
       matches = Search.where(search: current)
       if matches.length >= 2
 
         puts "This vibe has been checked before. Would u like to see previous checks of: #{current}?"
+        puts "                  *****(y/n)*****"
 
         if gets.chomp == 'y'
             rows1 = ['VIBE']
