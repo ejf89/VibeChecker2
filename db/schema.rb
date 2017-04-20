@@ -10,11 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170418205945) do
+ActiveRecord::Schema.define(version: 20170420135638) do
 
   create_table "searches", force: :cascade do |t|
-    t.string "search"
-    t.string "vibe"
+    t.string   "search"
+    t.string   "vibe"
+    t.float    "score"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "tweets", force: :cascade do |t|
@@ -23,6 +26,7 @@ ActiveRecord::Schema.define(version: 20170418205945) do
     t.string  "location"
     t.string  "date"
     t.integer "query_id"
+    t.float   "score"
   end
 
 end
