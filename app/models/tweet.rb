@@ -10,10 +10,10 @@ class Tweet < ActiveRecord::Base
         end
     end
 
-    def self.return_tweets #-needs to be added to CLI interaction
+    def self.return_tweets 
         self.where(query_id: Search.last.id).limit(5).each do |tweet|
             puts "#{tweet.content}\n\n"
-            puts "* * * * * * * * * * * * * * * * * * * * * * * * \n"
+            puts "* - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - *\n"
         end
     end
 

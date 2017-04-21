@@ -9,8 +9,8 @@ def event
         i += 1
     end
 
-    top = TwitterAdapter.new
-    top.call_twitter #<---runs search and stores into tweets
+    tweet_adapter = TwitterAdapter.new
+    tweet_adapter.call_twitter #<---runs search and stores into tweets
 
     @checker = SentimentChecker.new
     @checker.set_default
