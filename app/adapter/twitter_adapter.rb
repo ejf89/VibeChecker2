@@ -26,7 +26,6 @@ def slice_check
         puts "Slice too small, try checking more vibes\n"
         slice_check
     else
-
         @count
     end
 end
