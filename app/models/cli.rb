@@ -44,7 +44,7 @@ def event
         puts statement
 
         puts "\nWould like you 2 know more bout the vibe: #{lastSearchstring}?\n
-                *****(#{Paint['y', :green]}/n})*****"
+                *****(#{Paint['y', :green]}/n)*****"
         input = gets.chomp
 
 
