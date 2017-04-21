@@ -7,9 +7,12 @@ class Search < ActiveRecord::Base
 
       if matches.length >= 2
 
-        puts "!*\u{A1}*!\u{A1}*!\u{A1}*!\u{A1}*!\u{A1}*!\u{A1}*!\u{A1}*!\u{A1}*!\n"
-        puts " --> This vibe has been checked before. Would u like to see previous checks of: #{Paint[current, :green]}?"
-        puts "             *****(y/n)*****"
+        puts "!*\u{A1}*!*\u{A1}*!*\u{A1}*!*\u{A1}*!*\u{A1}*!*\u{A1}*!*\u{A1}*!*\u{A1}*!*\u{A1}*!*\u{A1}*!*\u{A1}*!*\u{A1}*!"
+        puts "!*\u{A1}*!*\u{A1}*!*\u{A1}*!*\u{A1}*!*\u{A1}*!*\u{A1}*!*\u{A1}*!*\u{A1}*!*\u{A1}*!*\u{A1}*!*\u{A1}*!*\u{A1}*!"
+        puts "!*\u{A1}*!*\u{A1}*!*\u{A1}*!*\u{A1}*!*\u{A1}*!*\u{A1}*!*\u{A1}*!*\u{A1}*!*\u{A1}*!*\u{A1}*!*\u{A1}*!*\u{A1}*!\n\n"
+
+        puts " --> This vibe has been checked before. Would u like to see previous checks of: #{Paint[current, :green]}?\n\n"
+        puts "           *****(y/n)*****"
 
 
         if gets.chomp == 'y'
@@ -49,7 +52,6 @@ class Search < ActiveRecord::Base
             puts table
         end
     end
-
     end
 
 end
