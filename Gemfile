@@ -8,8 +8,8 @@ gem 'require_all'
 gem 'sqlite3'
 gem 'twitter'
 gem 'sentimental'
-# gem 'progress_bar'
 gem 'terminal-table'
+gem 'paint'
 
 group :development do
   gem 'pry'

@@ -2,7 +2,7 @@ class Search < ActiveRecord::Base
     has_many :tweets
 
     def self.search_compare
-      current = Search.last.search
+      current = Paint[Search.last.search, :green]
       matches = Search.where(search: current).reverse
       if matches.length >= 2
 
@@ -44,7 +44,6 @@ class Search < ActiveRecord::Base
               t.add_row rows2.flatten
               t.add_row rows3.flatten
               t.add_row rows4.flatten
-
           end
 
             puts table
