@@ -2,7 +2,6 @@ class Tweet < ActiveRecord::Base
     belongs_to :search
 
     def self.collect_scores(checker)
-        # binding.pry
          self.where(query_id: Search.last.id).map do |tweet|
 
             tweet_score = checker.score tweet.content
