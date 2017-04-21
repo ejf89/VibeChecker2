@@ -10,22 +10,39 @@ class Tweet < ActiveRecord::Base
         end
     end
 
-    def self.return_tweets
+    def self.return_tweets(target, second_target)
         self.where(query_id: Search.last.id).limit(5).each do |tweet|
-            # if tweet.content.include? ('@')
-            #
-            #     # tweet.content = tweet.content.split(" ")
-            #     # tweet.content = tweet.content.split(" ")
-            #     tweet.content.map do |word|
-            #         if word[0] == '@'
-            #         word = Paint[word, :yellow]
-            #         end
-                # tweet.content.join(" ")
-            #     end
-            # end
-            puts "#{tweet.content}\n\n"
-            puts "* - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - *\n\n"
-        end
+                if tweet.content.include? (target)
+                    words_array = tweet.content.split(" ")
+                    words_array.map do |x|
+                        if x.include? (target)
+                            words_array[words_array.index(x)] = Paint[x, :bright, :red]
+                        end
+
+                        if x.include? (second_target)
+                            words_array[words_array.index(x)] = Paint[x, :bright, :yellow]
+                        end
+                        tweet.content = words_array.join(", ")
+                    end
+                end
+                puts "#{tweet.content}\n\n"
+                puts "* - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - *\n\n"
+            end
     end
+    # def self.return_tweets
+    #     self.where(query_id: Search.last.id).limit(5).each do |tweet|
+    #             if tweet.content.include? ('@')
+    #                 words_array = tweet.content.split(" ")
+    #                 words_array.map do |x|
+    #                     if x.include? '@'
+    #                         words_array[words_array.index(x)] = Paint[x, :bright, :yellow]
+    #                     end
+    #                     tweet.content = words_array.join(", ")
+    #                 end
+    #             end
+    #             puts "#{tweet.content}\n\n"
+    #             puts "* - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - *\n\n"
+    #         end
+    # end
 
 end
