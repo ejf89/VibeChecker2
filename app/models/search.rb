@@ -15,16 +15,18 @@ class Search < ActiveRecord::Base
 
         if gets.chomp == 'y'
             rows1 = ['VIBE']
-            rows2 = ['SCORE']
+            rows2 = [' SCORE']
             rows3 = ['# of Vibes']
             rows4 = ['MOMENT']
             stamps = []
+
+            # binding.pry
 
             matches.take(5).each do |match|
               rows1 << [match.vibe]
               rows2 << [match.score.round(2)]
               rows3 << [match.count]
-              rows4 << [match.created_at.to_s.slice(0...match.created_at.to_s.length - 3)]
+              rows4 << [match.created_at.to_formatted_s(:short)]
               stamps << match.created_at.to_s
             end
 
