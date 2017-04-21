@@ -7,7 +7,7 @@ class Search < ActiveRecord::Base
 
       if matches.length >= 2
 
-        puts "!*\u{A1}*!\u{A1}*!\u{A1}*!\u{A1}*!\u{A1}*!\u{A1}*!\u{A1}*!\u{A1}*!\n"
+        puts "!*\u{A1}*!*\u{A1}*!*\u{A1}*!*\u{A1}*!*\u{A1}*!*\u{A1}*!*\u{A1}*!*\u{A1}*!*\u{A1}*!"
         puts " --> This vibe has been checked before. Would u like to see previous checks of: #{Paint[current, :green]}?"
         puts "             *****(y/n)*****"
 
