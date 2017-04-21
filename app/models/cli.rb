@@ -55,7 +55,7 @@ def event
           system('clear')
             puts "THESE TWEETS ARE VIBIN:"
             puts "~*~*~*~*~*~*~*~*~*~*~*~*~*~\n\n"
-            Tweet.return_tweets
+            Tweet.return_tweets(lastSearchstring, '@')
             puts "\n\n"
             Search.search_compare
         end
@@ -87,7 +87,6 @@ end
 def star_shrink()
     star = Paint["*", :green]
     i = 43
-    # i = @declare_vibe.length
     while i > 0
         puts star * i
 
