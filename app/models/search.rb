@@ -33,16 +33,16 @@ class Search < ActiveRecord::Base
             headings_array = []
 
             if matches.length == 2
-                headings_array = ['info', 'NOW', 'THEN']
+                headings_array = [Paint['info', :bright, :blue], Paint['NOW', :bright, :blue], Paint['THEN', :bright, :blue]]
             elsif matches.length == 3
-                headings_array = ['info', 'NOW', 'THEN', 'LONG AGO']
+                headings_array = [Paint['info', :bright, :blue], Paint['NOW', :bright, :blue], Paint['THEN', :bright, :blue], Paint['LONG AGO', :bright, :blue]]
             elsif matches.length == 4
-                headings_array = ['info', 'NOW', 'THEN', 'LONG AGO', 'EVEN LONGER']
+                headings_array = [Paint['info', :bright, :blue], Paint['NOW', :bright, :blue], Paint['THEN', :bright, :blue], Paint['LONG AGO', :bright, :blue], Paint['EVEN LONGER', :bright, :blue]]
             elsif matches.length >= 5
-                headings_array = ['info', 'NOW', 'THEN', 'LONG AGO', 'EVEN LONGER', 'THE VIBE B.C.']
+                headings_array = [Paint['info', :bright, :blue], Paint['NOW', :bright, :blue], Paint['THEN', :bright, :blue], Paint['LONG AGO', :bright, :blue], Paint['EVEN LONGER', :bright, :blue], Paint['THE VIBE B.C.', :bright, :blue]]
             end
 
-            table = Terminal::Table.new :title => "#{current.upcase}", :headings => headings_array do |t|
+            table = Terminal::Table.new :title => "#{Paint[current.upcase, :green]}", :headings => headings_array do |t|
               t << rows1.flatten
               t.add_row rows2.flatten
               t.add_row rows3.flatten

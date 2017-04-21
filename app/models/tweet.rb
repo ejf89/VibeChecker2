@@ -22,13 +22,17 @@ class Tweet < ActiveRecord::Base
                         if x.include? (second_target)
                             words_array[words_array.index(x)] = Paint[x, :bright, :yellow]
                         end
-                        tweet.content = words_array.join(", ")
+                        tweet.content = words_array.join(" ")
                     end
                 end
                 puts "#{tweet.content}\n\n"
                 puts "* - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - *\n\n"
             end
+
         end
 
+
+
+    end
 
 end
