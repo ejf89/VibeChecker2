@@ -4,7 +4,6 @@ class Search < ActiveRecord::Base
     def self.search_compare
       current = Search.last.search
       matches = Search.where(search: current).reverse
-    #   binding.pry
       if matches.length >= 2
 
         puts "This vibe has been checked before. Would u like to see previous checks of: #{current}?"
@@ -26,20 +25,19 @@ class Search < ActiveRecord::Base
               stamps << match.created_at.to_s
             end
 
-            header_array = []
+            headings_array = []
+
             if matches.length == 2
-                header_array = ['tings', 'NOW', 'THEN']
+                headings_array = ['info', 'NOW', 'THEN']
             elsif matches.length == 3
-                header_array = ['tings', 'NOW', 'THEN', 'EVEN SOONER']
+                headings_array = ['info', 'NOW', 'THEN', 'LONG AGO']
             elsif matches.length == 4
-                header_array = ['tings', 'NOW', 'THEN', 'EVEN SOONER', 'LONGER BEFORE']
+                headings_array = ['info', 'NOW', 'THEN', 'LONG AGO', 'EVEN LONGER']
             elsif matches.length >= 5
-                header_array = ['tings', 'NOW', 'THEN', 'EVEN SOONER' ,'LONGER BEFORE', 'THE VIBE B.C.']
+                headings_array = ['info', 'NOW', 'THEN', 'LONG AGO', 'EVEN LONGER', 'THE VIBE B.C.']
             end
 
-
-            table = Terminal::Table.new :headings => header_array do |t|
-
+            table = Terminal::Table.new :title => "#{current}", :headings => headings_array do |t|
               t << rows1.flatten
               t.add_row rows2.flatten
               t.add_row rows3.flatten
