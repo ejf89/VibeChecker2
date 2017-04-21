@@ -4,6 +4,7 @@ def event
 
     while i < 43
         puts star * i
+        star = Paint[star, :green]
         sleep(0.03)
         i += 1
     end
@@ -53,6 +54,7 @@ def event
         Tweet.return_tweets
         puts "\n\n"
         Search.search_compare
+        binding.pry
     end
 
     puts "\nWould you like 2 check another vibe?\n

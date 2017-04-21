@@ -15,6 +15,7 @@ i = 0
 
 while i < 43
     puts star * i
+    star = Paint[star, :green]
     sleep(0.03)
     i += 1
 end
@@ -24,4 +25,4 @@ while i > 0
     i -= 1
 end
 
-puts "THANKS 4 VIBING, GOODBYE!"
+puts "#{Paint['THANKS', :blue]} 4 #{Paint['VIBING', :yellow]}, GOODBYE!"
