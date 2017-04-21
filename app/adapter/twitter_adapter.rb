@@ -47,7 +47,7 @@ end
     #all below methods called above
 ####################################################
   def add_query_to_table
-    @query = Search.create(:search => "#{@search}", :count => @count.to_i)
+    @query = Search.create(:search => "#{@search}", :count => @count.to_i.round(2))
   end
 
   def store_tweet(user_name, content, location, date)
