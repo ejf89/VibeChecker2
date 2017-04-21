@@ -46,7 +46,6 @@ class Search < ActiveRecord::Base
               t.add_row rows4.flatten
               t.style = {:border_x => "=", :alignment => :center}
           end
-
             puts table
         end
     end
