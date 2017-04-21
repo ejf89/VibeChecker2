@@ -24,4 +24,4 @@ while i > 0
     i -= 1
 end
 
-puts "#{Paint['THANKS', :blue]} 4 #{Paint['VIBING', :yellow]}, GOODBYE!"
+puts "#{Paint['THANKS', :blue]} 4 #{Paint['V~I~B~I~N~G', :yellow]}, GOODBYE!"

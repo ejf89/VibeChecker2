@@ -13,7 +13,6 @@ end
     puts "Please enter the vibe you'd like to check: "
     puts "\n"
     @search = "#{gets.chomp}"
-
     slice_check
 end
 
@@ -39,7 +38,7 @@ end
           content = x.attrs[:text]
           location = x.attrs[:user][:location]
           date = x.attrs[:created_at]
-          store_to_all(user_name, content, location, date)
+          store_tweet(user_name, content, location, date)
           end
     end
 
@@ -59,8 +58,6 @@ end
     )
   end
 
-  def store_to_all(user_name, content, location, date)
-      store_tweet(user_name, content, location, date)
-  end
+
 end
 ########################################################
