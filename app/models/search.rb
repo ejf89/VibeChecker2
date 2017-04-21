@@ -40,11 +40,12 @@ class Search < ActiveRecord::Base
                 headings_array = ['info', 'NOW', 'THEN', 'LONG AGO', 'EVEN LONGER', 'THE VIBE B.C.']
             end
 
-            table = Terminal::Table.new :title => "#{current}", :headings => headings_array do |t|
+            table = Terminal::Table.new :title => "#{current.upcase}", :headings => headings_array do |t|
               t << rows1.flatten
               t.add_row rows2.flatten
               t.add_row rows3.flatten
               t.add_row rows4.flatten
+              t.style = {:border_x => "=", :alignment => :center}
           end
 
             puts table
