@@ -2,11 +2,12 @@ class Search < ActiveRecord::Base
     has_many :tweets
 
     def self.search_compare
-      current = Paint[Search.last.search, :green]
+      current = Search.last.search
       matches = Search.where(search: current).reverse
+    #   binding.pry
       if matches.length >= 2
 
-        puts "This vibe has been checked before. Would u like to see previous checks of: #{current}?"
+        puts "This vibe has been checked before. Would u like to see previous checks of: #{Paint[current, :green]}?"
         puts "             *****(y/n)*****"
 
 
