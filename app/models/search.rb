@@ -16,12 +16,14 @@ class Search < ActiveRecord::Base
             rows1 = ['VIBE']
             rows2 = ['SCORE']
             rows3 = ['# of Vibes']
+            rows4 = ['MOMENT']
             stamps = []
 
             matches.take(5).each do |match|
               rows1 << [match.vibe]
               rows2 << [match.score.round(2)]
               rows3 << [match.count]
+              rows4 << [match.created_at.to_s.slice(0...match.created_at.to_s.length - 3)]
               stamps << match.created_at.to_s
             end
 
@@ -41,7 +43,10 @@ class Search < ActiveRecord::Base
               t << rows1.flatten
               t.add_row rows2.flatten
               t.add_row rows3.flatten
+              t.add_row rows4.flatten
+
           end
+
             puts table
         end
     end
