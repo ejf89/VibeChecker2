@@ -8,11 +8,15 @@ class SentimentChecker < Sentimental
     def self.declaration(average)
         if average < (-1 * 0.7)
             "very bad"
+        elsif average < (-1 * 0.3) && average > (-1 * 0.5)
+            "pretty bad"
         elsif average < (-1 * 0.1)
             "bad"
-        elsif average > 0.7
+        elsif average > 0.8
             "very good"
-        elsif average > 0.05
+        elsif average > 0.03 && average < 0.8
+            "pretty good"
+        elsif average > 0.1
             "good"
         else
             "smoothly indifferent"
