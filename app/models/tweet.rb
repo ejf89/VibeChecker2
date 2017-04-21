@@ -28,5 +28,9 @@ class Tweet < ActiveRecord::Base
                 puts "#{tweet.content}\n\n"
                 puts "* - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - *\n\n"
             end
+
+        end
+
+
+
     end
-end

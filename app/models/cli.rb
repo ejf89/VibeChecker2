@@ -1,4 +1,5 @@
 def welcome
+  
     system('clear')
     puts "Hello! Welcome to VibeChecker 2. Plz press enter to begin"
 
