@@ -15,12 +15,16 @@ VIBECHECKER2 is a CLI app that uses the Twitter API.
   - begin checkin vibes!
 
 
-# THANKS TO THESE GEMS FOR TEACHING US HOW TO USE GEMS & MAKE VIBECHECKER2 LOOK GREAT:
+# THANKS TO THESE GEMS FOR TEACHING US HOW TO USE GEMS & MAKE VIBECHECKER2 LOOK GREAT
 
   - twitter gem
   - paint gem
   - terminal-table gem
   - sentimental gem
+
+# DEMO VIDEO
+
+  https://youtu.be/cOo0s10Os-s
 
 
 # MADE BY
