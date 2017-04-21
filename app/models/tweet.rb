@@ -22,27 +22,11 @@ class Tweet < ActiveRecord::Base
                         if x.include? (second_target)
                             words_array[words_array.index(x)] = Paint[x, :bright, :yellow]
                         end
-                        tweet.content = words_array.join(", ")
+                        tweet.content = words_array.join(" ")
                     end
                 end
                 puts "#{tweet.content}\n\n"
                 puts "* - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - *\n\n"
             end
     end
-    # def self.return_tweets
-    #     self.where(query_id: Search.last.id).limit(5).each do |tweet|
-    #             if tweet.content.include? ('@')
-    #                 words_array = tweet.content.split(" ")
-    #                 words_array.map do |x|
-    #                     if x.include? '@'
-    #                         words_array[words_array.index(x)] = Paint[x, :bright, :yellow]
-    #                     end
-    #                     tweet.content = words_array.join(", ")
-    #                 end
-    #             end
-    #             puts "#{tweet.content}\n\n"
-    #             puts "* - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - *\n\n"
-    #         end
-    # end
-
 end
