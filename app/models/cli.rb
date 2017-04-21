@@ -23,6 +23,16 @@ def event
 
     Search.find_by(id: lastSearch).update(vibe: "#{vibeResult}", score: @average)#<--updates search table
 
+
+    #sets color of vibeResult
+    if vibeResult == "bad" || vibeResult == "very bad"
+        vibeResult = Paint[vibeResult, :red]
+    elsif vibeResult == "smoothly indifferent"
+        vibeResult = Paint[vibeResult, :yellow]
+    else
+        vibeResult = Paint[vibeResult, :green]
+    end
+
     statement = "Currently, The Vibe is #{vibeResult} towards: #{lastSearchstring}.\n\n"
     i = statement.length
     while i > 0
@@ -33,7 +43,7 @@ def event
     puts statement
 
     puts "\nWould like you 2 know more bout the vibe: #{lastSearchstring}?\n
-            *****(y/n)*****"
+            *****(#{Paint['y', :green]}/#{Paint['n', :red]})*****"
     input = gets.chomp
 
     if input == "y"
