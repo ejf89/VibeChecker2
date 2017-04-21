@@ -4,13 +4,12 @@ class Search < ActiveRecord::Base
     def self.search_compare
       current = Search.last.search
       matches = Search.where(search: current).reverse
-    #   binding.pry
+
       if matches.length >= 2
 
-        puts "This vibe has been checked before. Would u like to see previous checks of: #{Paint[current, :green]}?"
+        puts "!*\u{A1}*!\u{A1}*!\u{A1}*!\u{A1}*!\u{A1}*!\u{A1}*!\u{A1}*!\u{A1}*!\n"
+        puts " --> This vibe has been checked before. Would u like to see previous checks of: #{Paint[current, :green]}?"
         puts "             *****(y/n)*****"
-
-
 
 
         if gets.chomp == 'y'
@@ -19,8 +18,6 @@ class Search < ActiveRecord::Base
             rows3 = ['# of Vibes']
             rows4 = ['MOMENT']
             stamps = []
-
-            # binding.pry
 
             matches.take(5).each do |match|
               rows1 << [match.vibe]

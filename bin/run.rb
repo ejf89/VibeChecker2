@@ -1,6 +1,5 @@
 require_relative '../config/environment'
 
-##### teh shit going down here
 system('clear')
 puts "Hello! Welcome to VibeChecker 2. Plz press enter to begin"
 
