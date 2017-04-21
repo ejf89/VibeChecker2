@@ -4,6 +4,7 @@ def event
 
     while i < 43
         puts star * i
+        star = Paint[star, :green]
         sleep(0.03)
         i += 1
     end
@@ -46,6 +47,7 @@ def event
                 *****(#{Paint['y', :green]}/#{Paint['n', :red]})*****"
         input = gets.chomp
 
+
         if input == "y"
           system('clear')
             puts "THESE TWEETS ARE VIBIN:"
@@ -56,6 +58,7 @@ def event
         end
     else
         puts "An extremely unique vibe."
+
     end
 
     puts "\nWould you like 2 check another vibe?\n

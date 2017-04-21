@@ -32,7 +32,7 @@ end
 
 
   def call_twitter
-      results = twitter_login.search("#{@search} -RT -@", {language: "en", include_rts: false}).take(@count.to_i)
+      results = twitter_login.search("#{@search} -RT -@ -https -#", {language: "en", include_rts: false}).take(@count.to_i)
        add_query_to_table
         results.each do |x|
           user_name = x.attrs[:user][:screen_name]
