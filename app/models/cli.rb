@@ -32,16 +32,21 @@ def event
 
         Search.find_by(id: lastSearch).update(vibe: "#{vibeResult}", score: @average)#<--updates search table
 
-        #sets color of vibeResult
+        #sets color of vibeResult and asciify it
+        texter = Artii::Base.new
+
         if vibeResult == "bad" || vibeResult == "very bad" || vibeResult == "pretty bad"
-            vibeResult = Paint[vibeResult, :red]
+            vibeResult = Paint[texter.asciify(vibeResult), :red]
         elsif vibeResult == "smoothly indifferent"
-            vibeResult = Paint[vibeResult, :yellow]
+            vibeResult = Paint[texter.asciify(vibeResult), :yellow]
         else
-            vibeResult = Paint[vibeResult, :green]
+            vibeResult = Paint[texter.asciify(vibeResult), :green]
         end
 
-        @declare_vibe = "Currently, The Vibe is #{vibeResult} towards: #{lastSearchstring}.\n\n"
+                #
+                # binding.pry
+
+        @declare_vibe = "Currently, The Vibe is \n#{vibeResult} towards: #{lastSearchstring}.\n\n"
 
         star_shrink
 

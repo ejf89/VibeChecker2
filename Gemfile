@@ -10,6 +10,8 @@ gem 'twitter'
 gem 'sentimental'
 gem 'terminal-table'
 gem 'paint'
+gem 'artii'
+
 
 
 group :development do
