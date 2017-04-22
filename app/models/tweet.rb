@@ -10,21 +10,29 @@ class Tweet < ActiveRecord::Base
         end
     end
 
+    def target_color(array, target, color)
+        array.map do |x|
+            if x.include? (target)
+                array[array.index(x)] = Paint[x, :bright, color.to_sym]
+            end
+        end
+    end
+
+
     def self.return_tweets(target, second_target)
         self.where(query_id: Search.last.id).limit(5).each do |tweet|
                 if tweet.content.include? (target)
                     words_array = tweet.content.split(" ")
-                    words_array.map do |x|
-                        if x.include? (target)
-                            words_array[words_array.index(x)] = Paint[x, :bright, :red]
-                        end
-
-                        if x.include? (second_target)
-                            words_array[words_array.index(x)] = Paint[x, :bright, :yellow]
-                        end
-                        tweet.content = words_array.join(" ")
-                    end
+                    tweet.target_color(words_array, target, "red")
+                    tweet.content = words_array.join(" ")
                 end
+
+                if tweet.content.include? (second_target)
+                    words_array = tweet.content.split(" ")
+                    tweet.target_color(words_array, second_target, "yellow")
+                    tweet.content = words_array.join(" ")
+                end
+
                 puts "#{tweet.content}\n\n"
                 puts "* - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - *\n\n"
             end
